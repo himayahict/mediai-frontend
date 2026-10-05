@@ -157,7 +157,7 @@ const Documents = () => {
         return;
       }
 
-      const response = await axios.get("http://localhost:5000/api/documents", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/documents`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -192,13 +192,13 @@ const Documents = () => {
   };
 
   const handleViewDocument = (doc) => {
-    const fileUrl = `http://localhost:5000${doc.fileUrl}`;
+    const fileUrl = `${import.meta.env.VITE_API_URL}${doc.fileUrl}`;
 
     window.open(fileUrl, "_blank");
   };
 
   const handleDownloadDocument = (doc) => {
-    const fileUrl = `http://localhost:5000${doc.fileUrl}`;
+    const fileUrl = `${import.meta.env.VITE_API_URL}${doc.fileUrl}`;
 
     const link = document.createElement("a");
     link.href = fileUrl;
@@ -235,7 +235,7 @@ const Documents = () => {
       console.log("Document form data:", formData);
 
       const response = await axios.post(
-        "http://localhost:5000/api/documents",
+        `${import.meta.env.VITE_API_URL}/api/documents`,
         data,
         {
           headers: {
@@ -279,7 +279,7 @@ const Documents = () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:5000/api/documents/${doc._id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/documents/${doc._id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

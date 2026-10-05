@@ -28,7 +28,7 @@ const HealthJournal = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const userId = user?._id || user?.id;
 
-  const API_URL = "http://localhost:5000/api/health-journal";
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/health-journal`;
 
   // ===============================
   // ICONS

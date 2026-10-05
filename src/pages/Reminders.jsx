@@ -23,7 +23,7 @@ const Reminders = () => {
 
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("http://localhost:5000/api/reminders", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/reminders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +61,7 @@ const Reminders = () => {
       if (editingReminder) {
         // UPDATE REMINDER
         const response = await axios.put(
-          `http://localhost:5000/api/reminders/${editingReminder._id}`,
+          `${import.meta.env.VITE_API_URL}/api/reminders/${editingReminder._id}`,
           formData,
           {
             headers: {
@@ -84,7 +84,7 @@ const Reminders = () => {
       } else {
         // CREATE REMINDER
         const response = await axios.post(
-          "http://localhost:5000/api/reminders",
+          `${import.meta.env.VITE_API_URL}/api/reminders`,
           formData,
           {
             headers: {
@@ -119,7 +119,7 @@ const Reminders = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.delete(
-        `http://localhost:5000/api/reminders/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/reminders/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -142,7 +142,7 @@ const Reminders = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.patch(
-        `http://localhost:5000/api/reminders/${id}/status`,
+        `${import.meta.env.VITE_API_URL}/api/reminders/${id}/status`,
         {
           status: "Completed",
         },

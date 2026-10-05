@@ -27,7 +27,7 @@ const Profile = () => {
   const userId = user?.id;
   const token = localStorage.getItem("token");
 
-  const API_URL = "http://localhost:5000/api/profile";
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/profile`;
 
   // ================= FETCH PROFILE =================
 
@@ -201,7 +201,7 @@ const Profile = () => {
       setChangingPassword(true);
 
       const response = await axios.put(
-        "http://localhost:5000/api/auth/change-password",
+        `${import.meta.env.VITE_API_URL}/api/auth/change-password`,
         {
           currentPassword,
           newPassword,
